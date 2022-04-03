@@ -1,0 +1,50 @@
+const jwt = require('jsonwebtoken')
+const User = require('../models/user')
+
+const auth =  (req, res, next) => {
+    
+        const token = req.header('Authorization').replace('Bearer ', '')
+        
+       jwt.verify(token, 'accessTokenSecret' , (err,res)=>
+        {
+          if(err){
+          console.log(token)
+          console.log("Wrong!!")
+        // res.status(403).send("Invalid token")
+          return;
+          }
+          /*
+    const      decoded = res
+    console.log("decoded Id , ",decoded)
+        })
+        console.log("Token is", token)
+        
+        const user =  User.findOne({ _id: decoded._id, 'a_tokens.access_token': token },(err,res)=>{
+            if(err)
+            console.log("Could not get ")
+        })
+ req.access_token = token
+        const user =  User.findOne({ _id: res._id} ,(err,res)=>{
+            if(err)
+            console.log("Could not get ")  
+        if (!user) {
+         //   throw new Error()
+         res.send("Something is wrong")
+         return
+        }
+        */
+        
+ else{
+       
+        req.user = res
+        
+       console.log(res)
+        console.log("Successfully authorized")
+        next()
+ }
+        
+    })
+}
+
+
+module.exports = auth
