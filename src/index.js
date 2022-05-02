@@ -30,10 +30,11 @@ app.listen(port, () => {
 
 mongoose.connect('mongodb://127.0.0.1:27017/task-manager', {
 })
+/*
 const Task = require('./models/task')
 const User = require('./models/user')
 //
-/*
+
 const main = async () => {
     // const task = await Task.findById('5c2e505a3253e18a43e612e6')
     // await task.populate('owner').execPopulate()
